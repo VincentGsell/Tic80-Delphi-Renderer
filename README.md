@@ -1,7 +1,7 @@
 # Tic80 Delphi Renderer
  [Tic80 mini computer](https://tic80.com/) front renderer written in Delphi
 
-![](.\assets\TI80DelphiVCL.gif)
+![](./assets/TI80DelphiVCL.gif)
 
 Did you know [that](https://tic80.com/) ? Tic80 is a little cute&cool mini computer, used mainly for casual game and demoscene. It use Lua as scripting language.
 
@@ -27,6 +27,6 @@ What is not working yet :
 
 Some lua script work as is, other not, please, remove all keyboard, music, and no compatible stuff. (graphic only currently)
 
-![](.\assets\TI80DelphiFMX.gif)
+![](./assets/TI80DelphiFMX.gif)
 
-![](.\assets\Ti80VCLFire.png)
+![](./assets/Ti80VCLFire.png)
