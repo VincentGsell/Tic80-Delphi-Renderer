@@ -27,6 +27,10 @@ What is not working yet :
 
 Some lua script work as is, other not, please, remove all keyboard, music, and no compatible stuff. (graphic only currently)
 
+Dependancy : 
+ 
+- SimpleLua library - Included ([Wrapper on Lua lib.](https://github.com/Dennis1000/verysimplelua)) 
+
 ![](./assets/TI80DelphiFMX.gif)
 
 ![](./assets/Ti80VCLFire.png)
