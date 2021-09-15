@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{277E034F-4C6E-4A81-BB58-E5AF7E9A459B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VCL\TI804OP.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FMX\TIC80DFMX2d.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TI804OP">
+        <MSBuild Projects="VCL\TI804OP.dproj"/>
+    </Target>
+    <Target Name="TI804OP:Clean">
+        <MSBuild Projects="VCL\TI804OP.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TI804OP:Make">
+        <MSBuild Projects="VCL\TI804OP.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TIC80DFMX2d">
+        <MSBuild Projects="FMX\TIC80DFMX2d.dproj"/>
+    </Target>
+    <Target Name="TIC80DFMX2d:Clean">
+        <MSBuild Projects="FMX\TIC80DFMX2d.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TIC80DFMX2d:Make">
+        <MSBuild Projects="FMX\TIC80DFMX2d.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TI804OP;TIC80DFMX2d"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TI804OP:Clean;TIC80DFMX2d:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TI804OP:Make;TIC80DFMX2d:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

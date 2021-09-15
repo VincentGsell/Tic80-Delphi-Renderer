@@ -1,0 +1,231 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 567
+  ClientWidth = 910
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      '-- title:  3D demo'
+      '-- author: by Filippo'
+      '-- desc:   3D demo'
+      '-- script: lua'
+      '-- input:  gamepad'
+      ''
+      't=0'
+      ''
+      'cx=0'
+      'cy=0'
+      'cz=200'
+      'pivot={x=0,y=0,z=0}'
+      'angle=0'
+      'points={}'
+      'pal={15,14,9,6,8,2,1}'
+      ''
+      'function createCube(t)'
+      #9'--Init points for cube'
+      #9'points={}'
+      #9'local l'
+      #9'l = 5 + math.abs((math.sin(t/100))*10)'
+      #9'local p'
+      #9'for x=-3,3 do'
+      #9#9'for y=-3,3 do'
+      #9#9#9'for z=-3,3 do'
+      #9#9#9#9#9'p={x=x*l,'
+      #9#9#9#9#9#9#9#9'y=y*l,'
+      #9#9#9#9#9#9#9#9'z=z*l,'
+      #9#9#9#9#9#9#9#9'c=pal[4+z]}'
+      #9#9#9#9#9'table.insert(points,p)'
+      #9#9#9'end'
+      #9#9'end'
+      #9'end'
+      'end'
+      ''
+      'function createCurve(t)'
+      #9'--Init points for 3d curve'
+      #9'points={}'
+      #9'local i=0'
+      #9'local l'
+      #9'l1 = math.abs(5*(math.cos(t/50)))'
+      #9'for u=-70,70,15 do'
+      #9#9'local r1 = math.cos(math.rad(u))*30'
+      #9#9'for v=1,360,15 do'
+      #9#9#9'local x = math.sin(math.rad(v))'
+      #9#9#9'local y = math.cos(math.rad(v))'
+      #9#9#9#9'p={x=x*r1,'
+      #9#9#9#9#9#9#9'y=y*r1,'
+      #9#9#9#9#9#9#9'z=(u/(l1+0.7)+v/5),'
+      #9#9#9#9#9#9#9'c=pal[1+i%7]}'#9#9
+      #9#9#9#9#9#9#9'table.insert(points,p)'
+      #9#9'end'#9
+      #9'i=i+1'
+      #9'end'
+      'end'
+      ''
+      ''
+      'function p2d(p3d)'
+      #9'local fov = 180'
+      #9'local x0 = p3d.x + cx'
+      #9'local y0 = p3d.y + cy'
+      #9'local z0 = p3d.z + cz'
+      #9'local x2d = fov * x0 / z0'
+      #9'local y2d = fov * y0 / z0'
+      #9
+      #9'x2d = x2d + 120 --center w'
+      #9'y2d = y2d + 68  --center h'
+      #9
+      #9'return x2d,y2d'
+      'end'
+      ''
+      'function rotate(p3d,center,ax,ay,az)'
+      #9'local a,b,c'
+      #9'local a1,b1,c1'
+      #9'local a2,b2,c2'
+      #9'local a3,b2,c3'
+      #9'local np3d={x=0,y=0,z=0,c=0}'
+      ''
+      #9'a = p3d.x-center.x'
+      #9'b = p3d.y-center.y'
+      #9'c = p3d.z-center.z'
+      #9
+      #9'a1 = a*math.cos(az)-b*math.sin(az) '
+      ' b1 = a*math.sin(az)+b*math.cos(az)'
+      #9'c1 = c'
+      ''
+      #9'c2 = c1*math.cos(ay)-a1*math.sin(ay) '#9
+      #9'a2 = c1*math.sin(ay)+a1*math.cos(ay)'
+      ' b2 = b1'
+      #9
+      #9'b3 = b2*math.cos(ax)-c2*math.sin(ax) '#9
+      #9'c3 = b2*math.sin(ax)+c2*math.cos(ax)'
+      ' a3 = a2'#9#9
+      #9#9#9
+      #9'np3d.x=a3'
+      #9'np3d.y=b3'
+      #9'np3d.z=c3'
+      #9'np3d.c=p3d.c'
+      #9'return np3d'
+      'end'
+      ''
+      'function zsort(p1,p2)'
+      #9'return p1.z>p2.z'
+      'end'
+      ''
+      'function TIC()'
+      ''
+      #9'cls(10)'
+      #9'--Create points'
+      #9'if(t%900<450) then'
+      #9' createCube(t)'
+      #9'else'
+      #9' createCurve(t)'
+      #9'end'
+      #9
+      #9'--Rotate points'
+      #9'for k,p in pairs(points)do'
+      #9' pr = rotate(p,pivot,'
+      #9#9'angle,'
+      #9#9'angle/2,'
+      #9#9'angle/4)'
+      #9#9'points[k] = pr'#9
+      #9'end'#9#9
+      #9
+      #9'--Z Sort'
+      #9'table.sort(points,zsort)'
+      #9
+      #9'--Draw points'
+      #9'for k,p in pairs(points)do'
+      #9#9#9'i,j = p2d(p)'#9#9
+      #9#9#9'rect(i,j,6,6,p.c)'
+      #9'end'#9#9
+      #9
+      #9'angle = angle + 0.05'
+      #9't=t+1'
+      'end'
+      '')
+    Align = Left
+    Position.Y = 57.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 510.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 269.000000000000000000
+    Viewport.Height = 490.000000000000000000
+  end
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Client
+    DisableInterpolation = True
+    Size.Width = 613.000000000000000000
+    Size.Height = 510.000000000000000000
+    Size.PlatformDefault = False
+    OnMouseDown = Image1MouseDown
+    OnMouseMove = Image1MouseMove
+    OnMouseUp = Image1MouseUp
+  end
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 910.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object Button1: TButton
+      Position.X = 4.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'load...'
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Position.X = 106.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 45.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Run'
+      OnClick = Button2Click
+    end
+    object ComboBox1: TComboBox
+      Position.X = 216.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 209.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      OnChange = ComboBox1Change
+    end
+    object Label1: TLabel
+      Position.X = 216.000000000000000000
+      Position.Y = 8.000000000000000000
+      Text = 'Color template'
+      TabOrder = 4
+    end
+  end
+  object Splitter1: TSplitter
+    Align = Left
+    Cursor = crHSplit
+    MinSize = 20.000000000000000000
+    Position.X = 289.000000000000000000
+    Position.Y = 57.000000000000000000
+    Size.Width = 8.000000000000000000
+    Size.Height = 510.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 344
+    Top = 104
+  end
+end

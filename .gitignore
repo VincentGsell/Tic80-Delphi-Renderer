@@ -67,3 +67,31 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+sources/thirdPart/verysimplelua/DLL/MacOSX/liblua5.3.0.dylib
+sources/thirdPart/verysimplelua/Examples/Example 1 - Hello world/Example1.dpr
+sources/thirdPart/verysimplelua/Examples/Example 1 - Hello world/Example1.dproj
+sources/thirdPart/verysimplelua/Examples/Example 1 - Hello world/example1.lua
+sources/thirdPart/verysimplelua/Examples/Example 1 - Hello world/Example1.otares
+sources/thirdPart/verysimplelua/Examples/Example 1 - Hello world/Example1.res
+sources/thirdPart/verysimplelua/Examples/Example 1 - Hello world/Example1_Icon.ico
+sources/thirdPart/verysimplelua/Examples/Example 2 - Extend TVerySimpleLua/Example2.dpr
+sources/thirdPart/verysimplelua/Examples/Example 2 - Extend TVerySimpleLua/example2.lua
+sources/thirdPart/verysimplelua/Examples/Example 2 - Extend TVerySimpleLua/MyLua.pas
+sources/thirdPart/verysimplelua/Examples/Example 3 - Hello world (FMX)/Example3.dpr
+sources/thirdPart/verysimplelua/Examples/Example 3 - Hello world (FMX)/example3.lua
+sources/thirdPart/verysimplelua/Examples/Example 3 - Hello world (FMX)/Unit8.fmx
+sources/thirdPart/verysimplelua/Examples/Example 3 - Hello world (FMX)/Unit8.pas
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/Example4.dpr
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/Example4.dproj
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/example4.lua
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/Example4.res
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/MyLua.pas
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/Unit8.fmx
+sources/thirdPart/verysimplelua/Examples/Example 4 - Benchmark (FMX)/Unit8.pas
+sources/thirdPart/verysimplelua/Examples/Example 5 - Create a Package/Example5.dpr
+sources/thirdPart/verysimplelua/Examples/Example 5 - Create a Package/example5.lua
+sources/thirdPart/verysimplelua/Examples/Example 5 - Create a Package/MyLua.pas
+sources/thirdPart/verysimplelua/Examples/Example 5 - Create a Package/MyPackage.pas
+sources/thirdPart/verysimplelua/Examples/Example 5 - Create a Package/MyPackage2.pas
+sources/thirdPart/verysimplelua/Examples/Example 6 - Call Lua functions/Example6.dpr
+sources/thirdPart/verysimplelua/Examples/Example 6 - Call Lua functions/example6.lua
